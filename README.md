@@ -32,12 +32,12 @@ READ.ME = Explore the _other_ servo function, using the oscilloscope. Once you f
  
  READ.ME-  1. In a small writeup in the [README](README.md), answer the following questions:
  
-  1. What are the disadvantages of the other two serial communication channels, UART and SPI, and how does I2C improve on them?
-  2. I2C is a two-wire serial communication channel. What are the two wires, SDA and SCL?
-  3. What distinguishes the _master_ and the _slaves_?
-  4. How are the two types of protocol _frames_ different?
-  5. What is the most appropriate _trigger_ for capturing an I2C frame on the oscilloscope?
-  6. (Advanced) If the micro:bit is configured by default as a _master_, and two micro:bits, connected to each other via the SDA and SCL lines, communicate over I2C? (**Bonus** for a convincing argument, one way or another.)
+    1. What are the disadvantages of the other two serial communication channels, UART and SPI, and how does I2C improve on them?
+    2. I2C is a two-wire serial communication channel. What are the two wires, SDA and SCL?
+    3. What distinguishes the _master_ and the _slaves_?
+    4. How are the two types of protocol _frames_ different?
+    5. What is the most appropriate _trigger_ for capturing an I2C frame on the oscilloscope?
+    6. (Advanced) If the micro:bit is configured by default as a _master_, and two micro:bits, connected to each other via the SDA and SCL lines, communicate over I2C? (**Bonus** for a convincing argument, one way or another.)
  
 
 ### First steps with I2C:
