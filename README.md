@@ -28,18 +28,24 @@ READ.ME- Write up one sentence in the [README](README.md), enough to be able to 
 READ.ME = Explore the _other_ servo function, using the oscilloscope. Once you figure it out, write a small program to demo the operation, and record the video. _You might or might not need to use the **Single** mode of the oscilloscope._
    
 ### I2C warmup:
- Read the SparkFun [I2C tutorial](https://learn.sparkfun.com/tutorials/i2c).
- 
- READ.ME-  1. In a small writeup in the [README](README.md), answer the following questions:
- 
     1. What are the disadvantages of the other two serial communication channels, UART and SPI, and how does I2C improve on them?
+     - SPI is only intended for short distances, the biggest problem is the pin connection and the number of pins required. Making connections from multiple devices only slaved to one master.  UART is difficult to implent into your software if intended to do so.  This task eats up alot of data and slows the system down.  Where I2C improves in these areas begins with using only 2 wires and being able to connect to 1008 slave devices, the speed isnt as fast as SPI but gets the job done more efficently.
+     
     2. I2C is a two-wire serial communication channel. What are the two wires, SDA and SCL?
+     - SCL is a Clock Sigal, & SDA is a Data Signal.
+    
     3. What distinguishes the _master_ and the _slaves_?
+     - The Clock signal being located in the master is the difference between the two.
+     
     4. How are the two types of protocol _frames_ different?
+     - The first being the Adress Frame, is where the master lets the slave know where the message needs to be sent triggering one or multiple frames that are 8 bit. The second one being Data Frames, the data first is sent to the SDA which is chosen by the master or slave dependings of the R/W bit was written or read.
+     
     5. What is the most appropriate _trigger_ for capturing an I2C frame on the oscilloscope?
+     - The appropriate trigger to go with first is the SDA trigger becasue of its intial falling edge.
+     
     6. (Advanced) If the micro:bit is configured by default as a _master_, and two micro:bits, connected to each other via the SDA and SCL lines, communicate over I2C? (**Bonus** for a convincing argument, one way or another.)
+     - 
  
-
 ### First steps with I2C:
 
   1. In a loop, configure the micro:bit to write a number to some arbitrary I2C address. The address can be arbitrary. Capture an I2C frame on the oscilloscope. _Note that I2C has 2 wires, so you will need 2 probes, and set the correct trigger on the correct channel._ Use the **Single** mode on the oscillocope. Take a picture of your setup and a picture of the oscilloscope display. 
