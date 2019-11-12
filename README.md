@@ -20,11 +20,10 @@
 READ.ME- Write up one sentence in the [README](README.md), enough to be able to insert a link to the video.
 
 ### Signals:
-
-      1. Configure the **OUT** of the built-in function generator on the workstation with whatever function you want. _Remember that we used it to drive external LEDs._
-      2. Fire up the standalone Rigol function generator. It is right beneath the multimeter. Connect a probe. _Notice that the function generator probes also have two wires._ Connect it properly to the oscilloscope probe. Repeat the previous task with this new source.
-      3. Write a one-line micro:bit program to set an analog pin to emit PWM pulses. Which pin function will you use? Capture the signal. _PWM stands for [Pulse Width Modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) and is a method to control servo motors. PWM is based on a square wave signal where the pulses (that is, the sections where the signal is *_*high**) vary in width. The servo motor decodes the signal (essentially comparing the width of the pulse to the period of the square wave) and rotates the shaft accordingly._
-      4. To repeat the task from (1), you need a loop for your program in (3). Write a loop that varies the duty cycle, up and down, between 5% and 95%, in steps of 5%. _Note: Here, you need to read on the oscilloscope what the period of the base wave is, to calculate the duty cycles. Include the period and the pulse widths for the highest and lowest duty cycle in your short writeup._
+1. Configure the **OUT** of the built-in function generator on the workstation with whatever function you want. _Remember that we used it to drive external LEDs._
+2. Fire up the standalone Rigol function generator. It is right beneath the multimeter. Connect a probe. _Notice that the function generator probes also have two wires._ Connect it properly to the oscilloscope probe. Repeat the previous task with this new source.
+ 3. Write a one-line micro:bit program to set an analog pin to emit PWM pulses. Which pin function will you use? Capture the signal. _PWM stands for [Pulse Width Modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) and is a method to control servo motors. PWM is based on a square wave signal where the pulses (that is, the sections where the signal is *_*high**) vary in width. The servo motor decodes the signal (essentially comparing the width of the pulse to the period of the square wave) and rotates the shaft accordingly._
+ 4. To repeat the task from (1), you need a loop for your program in (3). Write a loop that varies the duty cycle, up and down, between 5% and 95%, in steps of 5%. _Note: Here, you need to read on the oscilloscope what the period of the base wave is, to calculate the duty cycles. Include the period and the pulse widths for the highest and lowest duty cycle in your short writeup._
 
 READ.ME = Explore the _other_ servo function, using the oscilloscope. Once you figure it out, write a small program to demo the operation, and record the video. _You might or might not need to use the **Single** mode of the oscilloscope._
    
@@ -33,28 +32,31 @@ READ.ME = Explore the _other_ servo function, using the oscilloscope. Once you f
  
  READ.ME-  1. In a small writeup in the [README](README.md), answer the following questions:
  
-      1. What are the disadvantages of the other two serial communication channels, UART and SPI, and how does I2C improve on them?
-      2. I2C is a two-wire serial communication channel. What are the two wires, SDA and SCL?
-      3. What distinguishes the _master_ and the _slaves_?
-      4. How are the two types of protocol _frames_ different?
-      5. What is the most appropriate _trigger_ for capturing an I2C frame on the oscilloscope?
-      6. (Advanced) If the micro:bit is configured by default as a _master_, and two micro:bits, connected to each other via the SDA and SCL lines, communicate over I2C? (**Bonus** for a convincing argument, one way or another.)
+  1. What are the disadvantages of the other two serial communication channels, UART and SPI, and how does I2C improve on them?
+  2. I2C is a two-wire serial communication channel. What are the two wires, SDA and SCL?
+  3. What distinguishes the _master_ and the _slaves_?
+  4. How are the two types of protocol _frames_ different?
+  5. What is the most appropriate _trigger_ for capturing an I2C frame on the oscilloscope?
+  6. (Advanced) If the micro:bit is configured by default as a _master_, and two micro:bits, connected to each other via the SDA and SCL lines, communicate over I2C? (**Bonus** for a convincing argument, one way or another.)
  
 
 ### First steps with I2C:
 
   1. In a loop, configure the micro:bit to write a number to some arbitrary I2C address. The address can be arbitrary. Capture an I2C frame on the oscilloscope. _Note that I2C has 2 wires, so you will need 2 probes, and set the correct trigger on the correct channel._ Use the **Single** mode on the oscillocope. Take a picture of your setup and a picture of the oscilloscope display. 
-  READ.ME- In the writeup, analyze what you have captured:
-      1. What frame did you capture?
-      2. What does the I2C write function do when there is nothing connected?
-      3. Is there a difference in what you capture if you write a number to one of the internal device addresses? _(The accelerometer and magentometer (compass) are connected to the I2C bus on the micro:bit PCB. Their addresses can be found [here]
-      
-  2. Write a short program to read a number from the I2C devices on the micro:bit. For each device:
+
+Write a short program to read a number from the I2C devices on the micro:bit. For each device:
       1. Try all three addresses. (**Bonus** for a cogent argument about why there are three.)
       2. Try signed and unsigned single bype integers.
       3. Scroll the values on the LED matrix. 
       4. What values do you read?
       5. Can you get different values by moving the micro:bit around.
+      
+ READ.ME- In the writeup, analyze what you have captured:
+      1. What frame did you capture?
+      2. What does the I2C write function do when there is nothing connected?
+      3. Is there a difference in what you capture if you write a number to one of the internal device addresses? _(The accelerometer and magentometer (compass) are connected to the I2C bus on the micro:bit PCB. Their addresses can be found [here]
+      
+  
 
    
 ### S5. (Advanced, optional, and bonus) Simple pulse-based protocol:
