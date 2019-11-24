@@ -24,23 +24,23 @@ I2C Read & Write Files:
 - [Write File](i2cWrite.js)
 
 ## section 1: Capturing I2C frame on oscilloscope
-- Location of [Capture](Capture.jpg) of I2C frame. 
-- Location of [SetUp](SetUp.jpg)
+- Location of [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/Capture.jpg) of I2C frame. 
+- Location of [SetUp](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/SetUp.jpg)
 
 ## (once link is opened to file, hit the download button to view the correct resolution of picture)
 1. What frame did you capture?
 - address frame
 2. What does the I2C write function do when there is nothing connected?
 - gives a blank scl sample reading when it goes from low to high.
-- [Capture](writeSignal.jpg)
+- [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/writeSignal.jpg)
 3. Is there a difference in what you capture if you write a number to one of the internal device addresses?
 - much larger amount of data after handshake
-- [Capture](writeToInternal.jpg)
+- [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/writeToInternal.jpg)
 - [File](writeInternalNumber.js)
 
 ## Section 2: Writing to Read 
 Call to varinat 1.3 accelerometer: we dont have first varinat micro-bit, showed no data. 
-- [Capture](1.3.jpg)
+- [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/1.3.jpg)
 - [File](variant1.3.js)
 
 Call to varinat 1 accelerometer: seems to be communicating with accelerometer.
