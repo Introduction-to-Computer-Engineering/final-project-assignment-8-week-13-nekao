@@ -27,7 +27,6 @@ I2C Read & Write Files:
 - Location of [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/Capture.jpg) of I2C frame. 
 - Location of [SetUp](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/SetUp.jpg)
 
-## (once link is opened to file, hit the download button to view the correct resolution of picture)
 1. What frame did you capture?
 - address frame
 2. What does the I2C write function do when there is nothing connected?
@@ -44,19 +43,19 @@ Call to varinat 1.3 accelerometer: we dont have first varinat micro-bit, showed 
 - [File](variant1.3.js)
 
 Call to varinat 1 accelerometer: seems to be communicating with accelerometer.
-- [Capture](variant1.jpg)
+- [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/variant1.jpg)
 - [File](variant1.js)
 
 Call to variant 2 accelerometer: call to variant 2 address 0x1E, seems to be communicating with either variant 2s accelerormeter or variant 1 magnetometer.
-- [Capture](variant2.jpg)
+- [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/variant2.jpg)
 - [File](variant2.js)
 
 Signed single byte integers: 
-- [Capture](signed.jpg)
+- [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/signed.jpg)
 - [File](signed.js)
 
 Unsigned single byte integers: 
-- [Capture](unsigned.jpg)
+- [Capture](https://raw.githubusercontent.com/Introduction-to-Computer-Engineering/final-project-assignment-8-week-13-haydenmejia/master/unsigned.jpg)
 - [File](unsigned.js)
 
 Scroll the values on the LED matrix?
