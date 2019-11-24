@@ -6,66 +6,84 @@
 
 #### Week 13 - Oscilloscopes and serial protocols
 
-### Oscilloscope warmup:
-
-   1. Watch the first 4 oscilloscope videos [referenced below](#oscilloscopes).
-   2. Take a look at the Rigol 1000 Series oscilloscopes documentation site to see what resources you have in case you need mmore in-depth knowledge.
-   3. The oscilloscope shows _continuous varying signals_ that it detects at the tips of its _probes_. The probe has a two wires: _signal_ (red or central probe), and _ground_ (black or outside wire). _Remember that voltage is a **relative** potential, so, unless you connect the ground, which serves as the **reference level**, you will get garbage._
-   4. Connect a Rigol probe to Channel 1.
-
-### Visualize simple continuous signals:
-
-   1. Visualize the following signals, using the **Auto** regime and default settings (trigger on a rising edge on CH1). For each signal, take a **video** of the setup (the source wire and connection of the oscilloscope probe) and the display of the oscilloscope, while varying one of the signal properties (wave shape, frequency, amplitude) using the controls of the source. 
- 
-READ.ME- Write up one sentence in the [README](README.md), enough to be able to insert a link to the video.
-
-### Signals:
-1. Configure the **OUT** of the built-in function generator on the workstation with whatever function you want. _Remember that we used it to drive external LEDs._
-2. Fire up the standalone Rigol function generator. It is right beneath the multimeter. Connect a probe. _Notice that the function generator probes also have two wires._ Connect it properly to the oscilloscope probe. Repeat the previous task with this new source.
- 3. Write a one-line micro:bit program to set an analog pin to emit PWM pulses. Which pin function will you use? Capture the signal. _PWM stands for [Pulse Width Modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) and is a method to control servo motors. PWM is based on a square wave signal where the pulses (that is, the sections where the signal is *_*high**) vary in width. The servo motor decodes the signal (essentially comparing the width of the pulse to the period of the square wave) and rotates the shaft accordingly._
- 4. To repeat the task from (1), you need a loop for your program in (3). Write a loop that varies the duty cycle, up and down, between 5% and 95%, in steps of 5%. _Note: Here, you need to read on the oscilloscope what the period of the base wave is, to calculate the duty cycles. Include the period and the pulse widths for the highest and lowest duty cycle in your short writeup._
-
-READ.ME = Explore the _other_ servo function, using the oscilloscope. Once you figure it out, write a small program to demo the operation, and record the video. _You might or might not need to use the **Single** mode of the oscilloscope._
-   
 ### I2C warmup:
-    1. What are the disadvantages of the other two serial communication channels, UART and SPI, and how does I2C improve on them?
-     - SPI is only intended for short distances, the biggest problem is the pin connection and the number of pins required. Making connections from multiple devices only slaved to one master.  UART is difficult to implent into your software if intended to do so.  This task eats up alot of data and slows the system down.  Where I2C improves in these areas begins with using only 2 wires and being able to connect to 1008 slave devices, the speed isnt as fast as SPI but gets the job done more efficently.
-     
-    2. I2C is a two-wire serial communication channel. What are the two wires, SDA and SCL?
-     - SCL is a Clock Sigal, & SDA is a Data Signal.
-    
-    3. What distinguishes the _master_ and the _slaves_?
-     - The Clock signal being located in the master is the difference between the two.
-     
-    4. How are the two types of protocol _frames_ different?
-     - The first being the Adress Frame, is where the master lets the slave know where the message needs to be sent triggering one or multiple frames that are 8 bit. The second one being Data Frames, the data first is sent to the SDA which is chosen by the master or slave dependings of the R/W bit was written or read.
-     
-    5. What is the most appropriate _trigger_ for capturing an I2C frame on the oscilloscope?
-     - The appropriate trigger to go with first is the SDA trigger becasue of its intial falling edge.
-     
-    6. (Advanced) If the micro:bit is configured by default as a _master_, and two micro:bits, connected to each other via the SDA and SCL lines, communicate over I2C? (**Bonus** for a convincing argument, one way or another.)
-     - 
- 
+1. What are the disadvantages of the other two serial communication channels, UART and SPI, and how does I2C improve on them?
+ - SPI is only intended for short distances, the biggest problem is the pin connection and the number of pins required. Making connections from multiple devices only slaved to one master.  UART is difficult to implent into your software if intended to do so.  This task eats up alot of data and slows the system down.  Where I2C improves in these areas begins with using only 2 wires and being able to connect to 1008 slave devices, the speed isnt as fast as SPI but gets the job done more efficently.
+2. I2C is a two-wire serial communication channel. What are the two wires, SDA and SCL? 
+ - SCL is a Clock Sigal, & SDA is a Data Signal.
+3. What distinguishes the master and the slaves? 
+ - The Clock signal being located in the master is the difference between the two.
+4. How are the two types of protocol frames different?
+ - the first being the Adress Frame, is where the master lets the slave know where the message needs to be sent triggering one or multiple frames that are 8 bit. The second one being Data Frames, the data first is sent to the SDA which is chosen by the master or slave dependings of the R/W bit was written or read.
+5. What is the most appropriate trigger for capturing an I2C frame on the oscilloscope?
+ - the appropriate trigger to go with first is the SDA trigger becasue of its intial falling edge.
+
 ### First steps with I2C:
+I2C Read & Write Files:
+- [Read File](i2cRead.js)
+- [Write File](i2cWrite.js)
 
-  1. In a loop, configure the micro:bit to write a number to some arbitrary I2C address. The address can be arbitrary. Capture an I2C frame on the oscilloscope. _Note that I2C has 2 wires, so you will need 2 probes, and set the correct trigger on the correct channel._ Use the **Single** mode on the oscillocope. Take a picture of your setup and a picture of the oscilloscope display. 
+## section 1: Capturing I2C frame on oscilloscope
+- Location of [Capture](Capture.jpg) of I2C frame. 
+- Location of [SetUp](SetUp.jpg)
 
-Write a short program to read a number from the I2C devices on the micro:bit. For each device:
-      1. Try all three addresses. (**Bonus** for a cogent argument about why there are three.)
-      2. Try signed and unsigned single bype integers.
-      3. Scroll the values on the LED matrix. 
-      4. What values do you read?
-      5. Can you get different values by moving the micro:bit around.
-      
- READ.ME- In the writeup, analyze what you have captured:
-      1. What frame did you capture?
-      2. What does the I2C write function do when there is nothing connected?
-      3. Is there a difference in what you capture if you write a number to one of the internal device addresses? _(The accelerometer and magentometer (compass) are connected to the I2C bus on the micro:bit PCB. Their addresses can be found [here]
-      
-  
+## (once link is opened to file, hit the download button to view the correct resolution of picture)
+1. What frame did you capture?
+- address frame
+2. What does the I2C write function do when there is nothing connected?
+- gives a blank scl sample reading when it goes from low to high.
+- [Capture](writeSignal.jpg)
+3. Is there a difference in what you capture if you write a number to one of the internal device addresses?
+- much larger amount of data after handshake
+- [Capture](writeToInternal.jpg)
+- [File](writeInternalNumber.js)
 
+## Section 2: Writing to Read 
+Call to varinat 1.3 accelerometer: we dont have first varinat micro-bit, showed no data. 
+- [Capture](1.3.jpg)
+- [File](variant1.3.js)
+
+Call to varinat 1 accelerometer: seems to be communicating with accelerometer.
+- [Capture](variant1.jpg)
+- [File](variant1.js)
+
+Call to variant 2 accelerometer: call to variant 2 address 0x1E, seems to be communicating with either variant 2s accelerormeter or variant 1 magnetometer.
+- [Capture](variant2.jpg)
+- [File](variant2.js)
+
+Signed single byte integers: 
+- [Capture](signed.jpg)
+- [File](signed.js)
+
+Unsigned single byte integers: 
+- [Capture](unsigned.jpg)
+- [File](unsigned.js)
+
+Scroll the values on the LED matrix?
+ - Reading:
+
+Can you get different Values from moving thr micro-bit around?
+
+### links for the Oscilliscope Assignment 8
+  - This write up is for the connection of the built-in function generator.
+    - [Demo](http://imgur.com/gallery/hEh2QPw)
+    
+  - This write up is for the connection of the ossiliscope.
+    - [Demo](http://imgur.com/gallery/7WLgX39)
    
-### S5. (Advanced, optional, and bonus) Simple pulse-based protocol:
-   1. Program one micro:bit to emit pulse-based patterns by driving a digital output pin. Use a 50% duty cycle. Start with the 11111 pattern.
-   2. Program another micro:bit to detect the pattern by listening on an digital input pin. Play with the `bits.onPulsed()` and `bits.pulseDuration()` functions.
-   3. Generate and capture all 5-bit patterns. _How will you deal with the patterns that start with the same value as your protocol line (that is, if your line is high by default, how will you deal with patterns that start with 1, and if you line is low by default, how will you deal with patterns that start with 0)?_ Devise a demo that shows this capability on a video. You may use the LED matrix to show the sent and received patterns, for comparison.
+  - This write up is for the one line program for the LED and oscilliscope connection.
+    - [Demo](http://imgur.com/gallery/IUjgB4M)
+    - [File](pws.js)
+  
+  - This write up is for the loop in the program that varies the duty cycle of the LED.
+    - [Demo](http://imgur.com/gallery/I8iRtUu)
+    - [File](pwCycle.js)
+  
+  - This write up is the servo connection also with the duty cycle of the LED being controled by the movement of the servo.
+    - [Demo](http://imgur.com/gallery/RdFtBsm)
+    - [File](servoOscilloscope.js)
+ 
+ 
+ 
+
+  
